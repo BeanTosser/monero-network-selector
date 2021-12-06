@@ -1,8 +1,8 @@
 {
-  "name": "monero-network-selector",
-  "version": "0.1.0",
+  "name": "moneronetworkselector",
+  "version": "0.1.1",
   "description": "A basic react component that allows users of a monero web application to select from among the three Monero networks (mainnet, stagenet, and testnet).",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "test",
     "rebuild": "rm -rf dist && babel src --out-dir dist --copy-files",
