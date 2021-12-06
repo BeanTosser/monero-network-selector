@@ -1,0 +1,37 @@
+{
+  "name": "monero-network-selector",
+  "version": "0.1.0",
+  "description": "A basic react component that allows users of a monero web application to select from among the three Monero networks (mainnet, stagenet, and testnet).",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "rebuild": "rm -rf dist && babel src --out-dir dist --copy-files",
+    "build": "babel src --out-dir dist --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beantosser/monero-network-selector.git"
+  },
+  "keywords": [
+    "monero",
+    "network",
+    "react",
+    "component"
+  ],
+  "author": "BeanTosser",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beantosser/monero-network-selector/issues"
+  },
+  "homepage": "https://github.com/beantosser/monero-network-selector#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0"
+  },
+  "dependencies": {
+    "core-js": "^3.19.2",
+    "regenerator-runtime": "^0.13.9"
+  }
+}
