@@ -7,9 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MoneroNetworkSelector = MoneroNetworkSelector;
 
-require("core-js/stable");
-
-require("regenerator-runtime/runtime");
+require("./MoneroNetworkSelector.css");
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -120,9 +118,13 @@ function MoneroNetworkSelector(props) {
     }
   }
 
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("label", {
+  return /*#__PURE__*/_react["default"].createElement("div", {
+    className: "network_selector_container"
+  }, /*#__PURE__*/_react["default"].createElement("label", {
     htmlFor: "network-select"
-  }, "Choose a Monero network"), /*#__PURE__*/_react["default"].createElement("select", {
+  }, "Choose a Monero network"), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "network_selector_spacer"
+  }), /*#__PURE__*/_react["default"].createElement("select", {
     name: "network-select",
     className: "network-select",
     onChange: handleSelect

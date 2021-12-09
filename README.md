@@ -2,10 +2,10 @@
 A React UI drop-down menu that allows end users of react-based Monero web applications to select which Monero network to use the application with.
 
 ## Usage
-These instructions only apply to independent use of the NetworkSelector UI component. If you want to use the NetworkSelector in conjunction with the ConnectionManager UI, use the [NetworkConnectionCoordinator component](https://ijli8s8ej8j.com/) (only available for [monero-javascript](https://github.com/monero-ecosystem/monero-javascript) applications)
+These instructions only apply to independent use of the MoneroNetworkSelector UI component. If you want to use the MoneroNetworkSelector in conjunction with the ConnectionManager UI, use the [NetworkConnectionCoordinator component](https://ijli8s8ej8j.com/) (only available for [monero-javascript](https://github.com/monero-ecosystem/monero-javascript) applications)
 
 ### Props
-The NetworkSelector component takes two props:
+The MoneroNetworkSelector component takes two props:
 1. <b>setNetworkType</b>(required): A function to handle the user changing the current network
 2. <b>networkTypes</b>(optional): An array of integer values between 0 and 2. Each integer corresponds to a network type:
   0: mainnet
@@ -22,17 +22,25 @@ The NetworkSelector component takes two props:
   * [8, 2] (only the values 0, 1, and 2 are valid)
   * [0] (the array must have at least two elements)
   * [0, 2, 1, 4] (the array must have no more than three elements)
-  Omitting the networkTypes prop will cause the NetworkSelector component to allow the user to choose from among all three Monero networks by default.
+  Omitting the networkTypes prop will cause the MoneroNetworkSelector component to allow the user to choose from among all three Monero networks by default.
 
 ### Instructions
-1. Place the NetworkSelector.js and NetworkSelector.css files into an appropriate location in your React project. For example: `src/components`. If your project uses typescript, place the NetworkSelecter.d.ts file in the same directory.
-2. Import the NetworkSelector component into the javascript file that you intend to use the NetworkSelector UI in:
-`import NetworkSelector from "./components/NetworkSelector.js"`
-3. Pass the required props to the NetworkSelector component in your JSX implementation:
+1. Install the MoneroNetworkSelector module from npm:
+
+```
+npm install monero-network-selector
+```
+2. Import the MoneroNetworkSelector component into the javascript file that you intend to use the MoneroNetworkSelector UI in (Note that the name of the package imported from does NOT contain dashes unlike the name of the npm package!):
+
+```
+import MoneroNetworkSelector from "moneronetworkselector"
+```
+3. Pass the required props to the MoneroNetworkSelector component in your JSX implementation:
+
 ```
 return(
 // Your JSX here
-<NetworkSelector 
+<MoneroNetworkSelector 
   setNetworkType = {setNetworkType}
   networkTypeFlags = {[0,1]}
 />

@@ -1,6 +1,5 @@
 // In place of deprecated babel polyfills
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import "./MoneroNetworkSelector.css";
 
 import React, {useRef} from "react";
 /*
@@ -126,15 +125,15 @@ export function MoneroNetworkSelector(props) {
   }
   
   return (
-    <>
+    <div className = "network_selector_container">
       <label htmlFor="network-select">Choose a Monero network</label>
-
+      <div className = "network_selector_spacer"></div>
       <select 
         name = "network-select" 
         className = "network-select"
         onChange = {handleSelect}>
           {availableNetworkOptions.current}
       </select>
-    </>
+    </div>
   )
 }
