@@ -1,7 +1,5 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,11 +7,9 @@ exports.MoneroNetworkSelector = MoneroNetworkSelector;
 
 require("./MoneroNetworkSelector.css");
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // In place of deprecated babel polyfills
 
@@ -37,11 +33,10 @@ function MoneroNetworkSelector(props) {
   console.log("Rendering networkselector");
   /*
    * props:
-   * networkTypes
-   * onNetworkTypeChanged
+   *
+   * networkTypes (optional)
+   * onNetworkTypeChanged (optional)
    */
-
-  var availableNetworkOptions = (0, _react.useRef)(null);
 
   var handleSelect = function handleSelect(event) {
     console.log("You chose the network type: " + event.target.value);
@@ -57,12 +52,13 @@ function MoneroNetworkSelector(props) {
     } else {
       thow("Something went wrong with network selection");
     }
-  }; // if networkTypes prop is not supplied, default to allowing a choice from among all three networks
+  };
 
+  var availableNetworkOptions = []; // if networkTypes prop is not supplied, default to allowing a choice from among all three networks
 
   if (props.networkTypes === undefined) {
     //default to all three networks
-    availableNetworkOptions.current = [/*#__PURE__*/_react["default"].createElement("option", {
+    availableNetworkOptions = [/*#__PURE__*/_react["default"].createElement("option", {
       value: "mainnet",
       key: "mainnet"
     }, "mainnet"), /*#__PURE__*/_react["default"].createElement("option", {
@@ -78,7 +74,7 @@ function MoneroNetworkSelector(props) {
     if (props.networkTypes.length >= 2 && props.networkTypes.length <= 3) {
       // Keep track of selected network types to check for invalid repeats
       var chosenNetworks = [];
-      availableNetworkOptions.current = props.networkTypes.map(function (networkTypeInteger) {
+      availableNetworkOptions = props.networkTypes.map(function (networkTypeInteger) {
         //Make sure the value is not a repeat
         if (chosenNetworks.indexOf(networkTypeInteger) === -1) {
           // The value is valid. add it to the available network types
@@ -121,12 +117,9 @@ function MoneroNetworkSelector(props) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "network_selector_container"
   }, /*#__PURE__*/_react["default"].createElement("label", {
-    htmlFor: "network-select"
-  }, "Choose a Monero network"), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "network_selector_spacer"
-  }), /*#__PURE__*/_react["default"].createElement("select", {
+    htmlFor: "network_select"
+  }, "Network: "), /*#__PURE__*/_react["default"].createElement("select", {
     name: "network-select",
-    className: "network-select",
     onChange: handleSelect
-  }, availableNetworkOptions.current));
+  }, availableNetworkOptions));
 }

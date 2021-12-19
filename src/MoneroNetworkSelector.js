@@ -1,7 +1,7 @@
 // In place of deprecated babel polyfills
 import "./MoneroNetworkSelector.css";
 
-import React, {useRef} from "react";
+import React from "react";
 /*
  * Network Selector
  *
@@ -23,11 +23,10 @@ export function MoneroNetworkSelector(props) {
   
   /*
    * props:
-   * networkTypes
-   * onNetworkTypeChanged
+   *
+   * networkTypes (optional)
+   * onNetworkTypeChanged (optional)
    */ 
-   
-  const availableNetworkOptions = useRef(null);
   
   const handleSelect = function(event) {
     console.log("You chose the network type: " + event.target.value);
@@ -46,10 +45,12 @@ export function MoneroNetworkSelector(props) {
 
   }
   
+  let availableNetworkOptions = [];
+  
   // if networkTypes prop is not supplied, default to allowing a choice from among all three networks
   if(props.networkTypes === undefined) {
     //default to all three networks
-    availableNetworkOptions.current = [
+    availableNetworkOptions = [
       <option
         value = "mainnet"
         key = "mainnet"
@@ -75,7 +76,7 @@ export function MoneroNetworkSelector(props) {
     if(props.networkTypes.length >= 2 && props.networkTypes.length <= 3) {
     // Keep track of selected network types to check for invalid repeats
       let chosenNetworks = [];
-      availableNetworkOptions.current = props.networkTypes.map(networkTypeInteger => {
+      availableNetworkOptions = props.networkTypes.map(networkTypeInteger => {
         //Make sure the value is not a repeat
         if(chosenNetworks.indexOf(networkTypeInteger) === -1){
           // The value is valid. add it to the available network types
@@ -126,13 +127,11 @@ export function MoneroNetworkSelector(props) {
   
   return (
     <div className = "network_selector_container">
-      <label htmlFor="network-select">Choose a Monero network</label>
-      <div className = "network_selector_spacer"></div>
+      <label htmlFor="network_select">Network: </label>
       <select 
-        name = "network-select" 
-        className = "network-select"
+        name = "network-select"
         onChange = {handleSelect}>
-          {availableNetworkOptions.current}
+          {availableNetworkOptions}
       </select>
     </div>
   )
