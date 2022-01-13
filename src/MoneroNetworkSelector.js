@@ -32,10 +32,8 @@ export function MoneroNetworkSelector(props) {
     console.log("You chose the network type: " + event.target.value);
 
     if (event.target.value === "mainnet") {
-      console.log("set network type to " + 0);
       props.onNetworkTypeChanged(0);
     } else if (event.target.value === "stagenet") {
-      console.log("set network type to " + 1);
       props.onNetworkTypeChanged(1);
     } else if (event.target.value === "testnet") {
       props.onNetworkTypeChanged(2);
@@ -83,7 +81,6 @@ export function MoneroNetworkSelector(props) {
           chosenNetworks.push(networkTypeInteger);
           switch(networkTypeInteger) {
             case 0:
-              console.log("adding mainnet");
               return (
                 <option
                   value = "mainnet"
@@ -93,7 +90,6 @@ export function MoneroNetworkSelector(props) {
                 </option>
               )
             case 1:
-            console.log("Adding stagenet");
               return (
                 <option
                   value = "stagenet"
@@ -103,7 +99,6 @@ export function MoneroNetworkSelector(props) {
                 </option>
               )
             case 2:
-              console.log("Adding testnet");
               return (
                 <option
                   value = "testnet"
